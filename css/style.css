@@ -170,3 +170,19 @@ footer {
 .filter-buttons button:hover {
   background: #1a73e8;
 }
+#searchInput {
+  width: 100%;
+  max-width: 400px;
+  padding: 12px 14px;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  background: #111;
+  border: 1px solid #333;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 0.95rem;
+}
+
+#searchInput::placeholder {
+  color: #888;
+}
