@@ -65,6 +65,12 @@ and access practical AI solutions — all in one place.
     Discover powerful AI tools across different categories,
     carefully organized to help you find the right solution faster.
   </p>
+<input 
+  type="text" 
+  id="searchInput" 
+  placeholder="Search AI tools..." 
+  onkeyup="searchTools()"
+/>
 
 <div class="filter-buttons">
   <button onclick="filterTools('all')">All</button>
@@ -147,6 +153,36 @@ and access practical AI solutions — all in one place.
   <p>© 2026 AIVORA. Built for the AI-first future.</p>
 </footer>
 <script>
+let activeCategory = 'all';
+
+function filterTools(category) {
+  activeCategory = category;
+  applyFilters();
+}
+
+function searchTools() {
+  applyFilters();
+}
+
+function applyFilters() {
+  const searchValue = document.getElementById('searchInput').value.toLowerCase();
+  const tools = document.querySelectorAll('.tool-card');
+
+  tools.forEach(tool => {
+    const toolName = tool.querySelector('h3').innerText.toLowerCase();
+    const matchesSearch = toolName.includes(searchValue);
+    const matchesCategory =
+      activeCategory === 'all' || tool.dataset.category === activeCategory;
+
+    if (matchesSearch && matchesCategory) {
+      tool.style.display = 'block';
+    } else {
+      tool.style.display = 'none';
+    }
+  });
+}
+</script>
+
 function filterTools(category) {
   const tools = document.querySelectorAll('.tool-card');
 
