@@ -138,3 +138,17 @@ footer {
 .tool-card button:hover {
   background: #1558b0;
 }
+.tool-btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  background: #1a73e8;
+  color: white;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.tool-btn:hover {
+  background: #1558b0;
+}
