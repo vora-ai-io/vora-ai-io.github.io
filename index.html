@@ -65,11 +65,39 @@ and access practical AI solutions — all in one place.
     Discover powerful AI tools across different categories,
     carefully organized to help you find the right solution faster.
   </p>
-
-  <div class="tools-grid">
-    
-    <div class="tool-card">
-      <h3>ChatGPT</h3>
+  <div class="filter-buttons">
+  <button onclick="filterTools('all')">All</button>
+  <button onclick="filterTools('chatbots')">Chatbots</button>
+  <button onclick="filterTools('image')">Image</button>
+  <button onclick="filterTools('productivity')">Productivity</button>
+  <button onclick="filterTools('design')">Design</button>
+</div>
+<div class="filter-buttons">
+  <button onclick="filterTools('all')">All</button>
+  <button onclick="filterTools('chatbots')">Chatbots</button>
+  <button onclick="filterTools('image')">Image</button>
+  <button onclick="filterTools('productivity')">Productivity</button>
+  <button onclick="filterTools('design')">Design</button>
+</div>
+<div class="filter-buttons">
+  <button onclick="filterTools('all')">All</button>
+  <button onclick="filterTools('chatbots')">Chatbots</button>
+  <button onclick="filterTools('image')">Image</button>
+  <button onclick="filterTools('productivity')">Productivity</button>
+  <button onclick="filterTools('design')">Design</button>
+</div>
+<div class="filter-buttons">
+  <button onclick="filterTools('all')">All</button>
+  <button onclick="filterTools('chatbots')">Chatbots</button>
+  <button onclick="filterTools('image')">Image</button>
+  <button onclick="filterTools('productivity')">Productivity</button>
+  <button onclick="filterTools('design')">Design</button>
+</div>
+    <div class="tools-grid">
+  
+     <div class="tool-card" data-category="chatbots">
+     
+       <h3>ChatGPT</h3>
       <p>AI chatbot for conversations, writing, coding, and problem-solving.</p>
       <span>Category: Chatbots</span><br><br>
       <button><a href="https://chat.openai.com" target="_blank" class="tool-btn">
@@ -78,8 +106,9 @@ and access practical AI solutions — all in one place.
 </button>
     </div>
 
-    <div class="tool-card">
-      <h3>Midjourney</h3>
+   <div class="tool-card" data-category="image">
+     
+     <h3>Midjourney</h3>
       <p>AI image generation tool for creating high-quality visuals from text.</p>
       <span>Category: Image Generation</span><br><br>
       <button><a href="https://www.midjourney.com" target="_blank" class="tool-btn">
@@ -88,7 +117,8 @@ and access practical AI solutions — all in one place.
 </button>
     </div>
 
-    <div class="tool-card">
+    <div class="tool-card" data-category="productivity">
+
       <h3>Notion AI</h3>
       <p>AI assistant for notes, documentation, and productivity workflows.</p>
       <span>Category: Productivity</span><br><br>
@@ -98,7 +128,8 @@ and access practical AI solutions — all in one place.
 </button>
     </div>
 
-    <div class="tool-card">
+    <div class="tool-card" data-category="design">
+
       <h3>Canva AI</h3>
       <p>AI-powered design tools for graphics, presentations, and branding.</p>
       <span>Category: Design</span><br><br>
@@ -134,6 +165,19 @@ and access practical AI solutions — all in one place.
  <footer>
   <p>© 2026 AIVORA. Built for the AI-first future.</p>
 </footer>
+<script>
+function filterTools(category) {
+  const tools = document.querySelectorAll('.tool-card');
+
+  tools.forEach(tool => {
+    if (category === 'all' || tool.dataset.category === category) {
+      tool.style.display = 'block';
+    } else {
+      tool.style.display = 'none';
+    }
+  });
+}
+</script>
 
 </body>
 </html>
