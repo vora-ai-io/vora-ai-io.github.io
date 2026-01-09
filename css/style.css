@@ -186,3 +186,6 @@ footer {
 #searchInput::placeholder {
   color: #888;
 }
+html {
+  scroll-behavior: smooth;
+}
