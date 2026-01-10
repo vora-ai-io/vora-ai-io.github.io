@@ -188,9 +188,9 @@ function applyFilters() {
 }
 </script>
 
+<<script>
 function filterTools(category) {
   const tools = document.querySelectorAll('.tool-card');
-
   tools.forEach(tool => {
     if (category === 'all' || tool.dataset.category === category) {
       tool.style.display = 'block';
@@ -200,7 +200,6 @@ function filterTools(category) {
   });
 }
 </script>
-
 </body>
 </html>
-
+>
