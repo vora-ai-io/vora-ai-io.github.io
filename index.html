@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- SEO -->
-  <meta name="description" content="AIVORA helps you explore, compare, and use the best AI tools in one place." />
+  <meta name="description" content="AIVORA is a unified platform to explore, discover, and compare the best AI tools in one place." />
 
   <!-- CSS -->
   <link rel="stylesheet" href="css/style.css" />
@@ -20,7 +20,6 @@
   <ul class="nav-links">
     <li><a href="#home">Home</a></li>
     <li><a href="#tools">Tools</a></li>
-    <li><a href="#submit">Submit Tool</a></li>
     <li><a href="#about">About</a></li>
   </ul>
 </nav>
@@ -33,48 +32,15 @@
     A unified platform to discover AI tools, understand real use cases,
     and access practical AI solutions — all in one place.
   </p>
-  <a href="#tools" class="btn-primary">Explore AI Tools</a>
 </section>
 
-<main>
+<!-- TOOLS SECTION -->
+<section id="tools" class="tools-section">
 
-<!-- ABOUT -->
-<section>
-  <h2>What is AIVORA?</h2>
-  <p>
-    AIVORA is an evolving AI ecosystem designed to help individuals,
-    creators, and teams navigate the rapidly growing world of artificial intelligence.
-    We curate, organize, and build AI tools that are practical,
-    accessible, and future-ready.
-  </p>
-</section>
-
-<section>
-  <h2>Who AIVORA Is For</h2>
-  <ul>
-    <li>Learners exploring AI</li>
-    <li>Creators & freelancers</li>
-    <li>Builders & developers</li>
-    <li>Teams adopting AI tools</li>
-  </ul>
-</section>
-
-<section id="vision">
-  <h2>Our Vision</h2>
-  <p>
-    To become a trusted platform where AI tools are discovered,
-    compared, and eventually built — enabling anyone to work smarter with AI.
-  </p>
-</section>
-
-<!-- TOOLS -->
-<section id="tools">
   <h2>AI Tools Directory</h2>
-  <p>
-    Discover powerful AI tools across different categories,
-    carefully organized to help you find the right solution faster.
-  </p>
+  <p>Discover powerful AI tools across different categories.</p>
 
+  <!-- SEARCH -->
   <input
     type="text"
     id="searchInput"
@@ -82,6 +48,7 @@
     onkeyup="searchTools()"
   />
 
+  <!-- FILTER BUTTONS -->
   <div class="filters">
     <button onclick="filterTools('all')">All</button>
     <button onclick="filterTools('chatbots')">Chatbots</button>
@@ -92,74 +59,61 @@
 
   <!-- TOOLS CONTAINER -->
   <div id="tools-container" class="tools-grid"></div>
+
 </section>
 
-<!-- BUILDING -->
-<section>
-  <h3>What We’re Building</h3>
-  <ul>
-    <li>Curated AI tools directory</li>
-    <li>Clear categories & comparisons</li>
-    <li>Practical AI explanations</li>
-    <li>AIVORA Original AI tools</li>
-    <li>Custom chatbots & workflows</li>
-  </ul>
+<!-- ABOUT -->
+<section id="about">
+  <h2>About AIVORA</h2>
+  <p>
+    AIVORA is an evolving AI ecosystem built to help individuals,
+    creators, and teams navigate the rapidly growing world of artificial intelligence.
+  </p>
 </section>
-
-<section>
-  <h2>Coming Soon</h2>
-  <ul>
-    <li>Advanced AI workflows</li>
-    <li>Original AIVORA tools</li>
-    <li>Beginner-friendly guides</li>
-    <li>Community submissions</li>
-  </ul>
-</section>
-
-</main>
 
 <!-- FOOTER -->
-<footer id="about">
+<footer>
   <p>© 2026 AIVORA. Built for the AI-first future.</p>
 </footer>
 
-<!-- DATA -->
+<!-- ================= SCRIPTS ================= -->
+
 <script>
+/* TOOL DATA */
 const toolsData = [
   {
     name: "ChatGPT",
     description: "AI chatbot for conversations, writing, coding, and problem-solving.",
     category: "chatbots",
-    link: "https://chat.openai.com"
+    page: "tools/chatgpt.html"
   },
   {
     name: "Midjourney",
     description: "AI image generation tool for creating high-quality visuals from text.",
     category: "image",
-    link: "https://www.midjourney.com"
+    page: "tools/midjourney.html"
   },
   {
     name: "Notion AI",
     description: "AI assistant for notes, documentation, and productivity workflows.",
     category: "productivity",
-    link: "https://www.notion.so"
+    page: "tools/notion-ai.html"
   },
   {
     name: "Canva AI",
     description: "AI-powered design tools for graphics, presentations, and branding.",
     category: "design",
-    link: "https://www.canva.com"
+    page: "tools/canva-ai.html"
   }
 ];
-</script>
 
-<!-- LOGIC -->
-<script>
 let activeCategory = "all";
-const container = document.getElementById("tools-container");
 
+/* RENDER TOOLS */
 function renderTools() {
+  const container = document.getElementById("tools-container");
   const searchValue = document.getElementById("searchInput").value.toLowerCase();
+
   container.innerHTML = "";
 
   toolsData.forEach(tool => {
@@ -171,60 +125,34 @@ function renderTools() {
     if (matchesCategory && matchesSearch) {
       const card = document.createElement("div");
       card.className = "tool-card";
+      card.dataset.category = tool.category;
+
       card.innerHTML = `
         <h3>${tool.name}</h3>
         <p>${tool.description}</p>
         <span class="category">${tool.category}</span>
-       <button class="btn" onclick='openModal(${JSON.stringify(tool)})'>
-  Use Tool
-</button>
-
+        <a href="${tool.page}" class="btn">View Tool</a>
       `;
+
       container.appendChild(card);
     }
   });
 }
 
+/* FILTER */
 function filterTools(category) {
   activeCategory = category;
   renderTools();
 }
 
+/* SEARCH */
 function searchTools() {
   renderTools();
 }
 
+/* INITIAL LOAD */
 renderTools();
 </script>
-<!-- TOOL MODAL -->
-<div id="toolModal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal()">×</span>
-
-    <h2 id="modalTitle"></h2>
-    <p id="modalDescription"></p>
-    <p><strong>Category:</strong> <span id="modalCategory"></span></p>
-
-    <!-- Future: your internal AI tool iframe goes here -->
-    <a id="modalLink" href="#" target="_blank" class="btn">
-      Launch Tool
-    </a>
-  </div>
-</div>
 
 </body>
 </html>
-<script>
-function openModal(tool) {
-  document.getElementById("modalTitle").innerText = tool.name;
-  document.getElementById("modalDescription").innerText = tool.description;
-  document.getElementById("modalCategory").innerText = tool.category;
-  document.getElementById("modalLink").href = tool.link;
-
-  document.getElementById("toolModal").style.display = "block";
-}
-
-function closeModal() {
-  document.getElementById("toolModal").style.display = "none";
-}
-</script>
