@@ -175,7 +175,10 @@ function renderTools() {
         <h3>${tool.name}</h3>
         <p>${tool.description}</p>
         <span class="category">${tool.category}</span>
-        <a href="${tool.link}" target="_blank" class="btn">Use Tool</a>
+       <button class="btn" onclick='openModal(${JSON.stringify(tool)})'>
+  Use Tool
+</button>
+
       `;
       container.appendChild(card);
     }
@@ -211,3 +214,17 @@ renderTools();
 
 </body>
 </html>
+<script>
+function openModal(tool) {
+  document.getElementById("modalTitle").innerText = tool.name;
+  document.getElementById("modalDescription").innerText = tool.description;
+  document.getElementById("modalCategory").innerText = tool.category;
+  document.getElementById("modalLink").href = tool.link;
+
+  document.getElementById("toolModal").style.display = "block";
+}
+
+function closeModal() {
+  document.getElementById("toolModal").style.display = "none";
+}
+</script>
