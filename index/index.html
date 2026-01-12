@@ -1,158 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>AIVORA – Explore the AI Ecosystem</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- SEO -->
-  <meta name="description" content="AIVORA is a unified platform to explore, discover, and compare the best AI tools in one place." />
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="css/style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Discover and explore the world’s most powerful AI tools in one platform.">
+  <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
 
-<!-- NAVBAR -->
 <nav class="navbar">
   <div class="logo">AIVORA</div>
   <ul class="nav-links">
-    <li><a href="#home">Home</a></li>
-    <li><a href="#tools">Tools</a></li>
-    <li><a href="#about">About</a></li>
+    <li><a href="tools.html">Tools</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="about.html">About</a></li>
   </ul>
 </nav>
 
-<!-- HERO -->
-<section id="home" class="hero">
-  <h1>AIVORA</h1>
-  <h2>Explore. Compare. Build with AI.</h2>
-  <p>
-    A unified platform to discover AI tools, understand real use cases,
-    and access practical AI solutions — all in one place.
-  </p>
+<section class="hero">
+  <h1>Explore. Compare. Build with AI.</h1>
+  <p>AIVORA is the central hub for discovering high-demand AI tools.</p>
+  <a href="tools.html" class="btn">Explore Tools</a>
 </section>
 
-<!-- TOOLS SECTION -->
-<section id="tools" class="tools-section">
-
-  <h2>AI Tools Directory</h2>
-  <p>Discover powerful AI tools across different categories.</p>
-
-  <!-- SEARCH -->
-  <input
-    type="text"
-    id="searchInput"
-    placeholder="Search AI tools..."
-    onkeyup="searchTools()"
-  />
-
-  <!-- FILTER BUTTONS -->
-  <div class="filters">
-    <button onclick="filterTools('all')">All</button>
-    <button onclick="filterTools('chatbots')">Chatbots</button>
-    <button onclick="filterTools('image')">Image</button>
-    <button onclick="filterTools('productivity')">Productivity</button>
-    <button onclick="filterTools('design')">Design</button>
-  </div>
-
-  <!-- TOOLS CONTAINER -->
-  <div id="tools-container" class="tools-grid"></div>
-
-</section>
-
-<!-- ABOUT -->
-<section id="about">
-  <h2>About AIVORA</h2>
-  <p>
-    AIVORA is an evolving AI ecosystem built to help individuals,
-    creators, and teams navigate the rapidly growing world of artificial intelligence.
-  </p>
-</section>
-
-<!-- FOOTER -->
 <footer>
-  <p>© 2026 AIVORA. Built for the AI-first future.</p>
+  © 2026 AIVORA
 </footer>
-
-<!-- ================= SCRIPTS ================= -->
-
-<script>
-/* TOOL DATA */
-const toolsData = [
-  {
-    name: "ChatGPT",
-    description: "AI chatbot for conversations, writing, coding, and problem-solving.",
-    category: "chatbots",
-    page: "tools/chatgpt.html"
-  },
-  {
-    name: "Midjourney",
-    description: "AI image generation tool for creating high-quality visuals from text.",
-    category: "image",
-    page: "tools/midjourney.html"
-  },
-  {
-    name: "Notion AI",
-    description: "AI assistant for notes, documentation, and productivity workflows.",
-    category: "productivity",
-    page: "tools/notion-ai.html"
-  },
-  {
-    name: "Canva AI",
-    description: "AI-powered design tools for graphics, presentations, and branding.",
-    category: "design",
-    page: "tools/canva-ai.html"
-  }
-];
-
-let activeCategory = "all";
-
-/* RENDER TOOLS */
-function renderTools() {
-  const container = document.getElementById("tools-container");
-  const searchValue = document.getElementById("searchInput").value.toLowerCase();
-
-  container.innerHTML = "";
-
-  toolsData.forEach(tool => {
-    const matchesCategory =
-      activeCategory === "all" || tool.category === activeCategory;
-    const matchesSearch =
-      tool.name.toLowerCase().includes(searchValue);
-
-    if (matchesCategory && matchesSearch) {
-      const card = document.createElement("div");
-      card.className = "tool-card";
-      card.dataset.category = tool.category;
-
-      card.innerHTML = `
-        <h3>${tool.name}</h3>
-        <p>${tool.description}</p>
-        <span class="category">${tool.category}</span>
-        <a href="${tool.page}" class="btn">View Tool</a>
-      `;
-
-      container.appendChild(card);
-    }
-  });
-}
-
-/* FILTER */
-function filterTools(category) {
-  activeCategory = category;
-  renderTools();
-}
-
-/* SEARCH */
-function searchTools() {
-  renderTools();
-}
-
-/* INITIAL LOAD */
-renderTools();
-</script>
 
 </body>
 </html>
