@@ -1,32 +1,205 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>AIVORA – Explore the AI Ecosystem</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Discover and explore the world’s most powerful AI tools in one platform.">
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AiVORA – Explore the AI Ecosystem</title>
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+
+    body {
+      background: #0b0f19;
+      color: #ffffff;
+      line-height: 1.6;
+    }
+
+    header {
+      padding: 20px 40px;
+      background: #11162a;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      color: #4da3ff;
+    }
+
+    nav a {
+      margin-left: 20px;
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    section {
+      padding: 60px 40px;
+    }
+
+    .hero {
+      text-align: center;
+    }
+
+    .hero h2 {
+      font-size: 42px;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      max-width: 700px;
+      margin: auto;
+      color: #cbd5ff;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 25px;
+      padding: 12px 25px;
+      background: #4da3ff;
+      color: #000;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .tool-card {
+      background: #11162a;
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid #1f2a44;
+    }
+
+    .tool-card h3 {
+      margin-bottom: 10px;
+      color: #4da3ff;
+    }
+
+    .tool-card p {
+      font-size: 14px;
+      color: #cbd5ff;
+    }
+
+    .pricing {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .price-box {
+      background: #11162a;
+      padding: 25px;
+      border-radius: 10px;
+      border: 1px solid #1f2a44;
+      text-align: center;
+    }
+
+    footer {
+      background: #070b14;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #9aa4ff;
+    }
+  </style>
 </head>
+
 <body>
 
-<nav class="navbar">
-  <div class="logo">AIVORA</div>
-  <ul class="nav-links">
-    <li><a href="tools.html">Tools</a></li>
-    <li><a href="pricing.html">Pricing</a></li>
-    <li><a href="about.html">About</a></li>
-  </ul>
-</nav>
+  <!-- HEADER -->
+  <header>
+    <h1>AiVORA</h1>
+    <nav>
+      <a href="#tools">Tools</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#about">About</a>
+    </nav>
+  </header>
 
-<section class="hero">
-  <h1>Explore. Compare. Build with AI.</h1>
-  <p>AIVORA is the central hub for discovering high-demand AI tools.</p>
-  <a href="tools.html" class="btn">Explore Tools</a>
-</section>
+  <!-- HERO -->
+  <section class="hero">
+    <h2>Explore the AI Ecosystem</h2>
+    <p>
+      AiVORA is a curated platform showcasing the most powerful and high-demand AI tools
+      across productivity, creativity, development, and marketing — all in one place.
+    </p>
+    <a class="btn" href="#tools">Explore Tools</a>
+  </section>
 
-<footer>
-  © 2026 AIVORA
-</footer>
+  <!-- ABOUT -->
+  <section id="about">
+    <h2>Why AiVORA?</h2>
+    <p>
+      AiVORA helps individuals, creators, and businesses discover the right AI tools
+      faster without noise, confusion, or bias.
+    </p>
+  </section>
+
+  <!-- TOOLS -->
+  <section id="tools">
+    <h2>Popular AI Tools</h2>
+    <div class="tools-grid" id="toolsGrid"></div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing">
+    <h2>Pricing (Credit-Based)</h2>
+    <div class="pricing">
+      <div class="price-box">
+        <h3>Free</h3>
+        <p>10 credits / month</p>
+        <p>Browse tools</p>
+      </div>
+      <div class="price-box">
+        <h3>Starter</h3>
+        <p>100 credits</p>
+        <p>Advanced filters</p>
+      </div>
+      <div class="price-box">
+        <h3>Pro</h3>
+        <p>Unlimited credits</p>
+        <p>Premium tools</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    © 2026 AiVORA • Built by a professional AI-focused team
+  </footer>
+
+  <!-- SCRIPT -->
+  <script>
+    const tools = [
+      { name: "ChatGPT", desc: "Conversational AI for writing, learning, and automation." },
+      { name: "Midjourney", desc: "AI image generation with stunning creativity." },
+      { name: "Notion AI", desc: "AI-powered productivity and note-taking." },
+      { name: "GitHub Copilot", desc: "AI coding assistant for developers." },
+      { name: "Canva AI", desc: "Design faster with AI-powered tools." },
+      { name: "Runway", desc: "AI video editing and generation." }
+    ];
+
+    const grid = document.getElementById("toolsGrid");
+
+    tools.forEach(tool => {
+      const card = document.createElement("div");
+      card.className = "tool-card";
+      card.innerHTML = `
+        <h3>${tool.name}</h3>
+        <p>${tool.desc}</p>
+      `;
+      grid.appendChild(card);
+    });
+  </script>
 
 </body>
 </html>
+
