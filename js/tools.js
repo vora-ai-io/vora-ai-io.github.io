@@ -14,4 +14,3 @@ tools.forEach(tool => {
   div.innerHTML = `<h3>${tool.name}</h3><p>${tool.desc}</p>`;
   grid.appendChild(div);
 });
-
